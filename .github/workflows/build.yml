@@ -13,6 +13,8 @@ jobs:
         uses: actions/checkout@v4
       - name: install the dependencies
         run: npm install
+      - name: install the zip utility
+        run: sudo apt-get install zip -y
       - name: genrate the deployemnet package
         run: zip -r nodejs-app-build.zip .
       - name: Deploy to EB
