@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
   res
     .status(200)
     .send(
-      "Hello Milkyway!!! ===> " +
+      "Hello Bharat!!! ===> " +
         dateTime +
         "<br>Application is running on port " +
         PORT
