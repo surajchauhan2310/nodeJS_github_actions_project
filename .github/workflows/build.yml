@@ -13,6 +13,8 @@ jobs:
         uses: actions/checkout@v4
       - name: install the dependencies
         run: npm install
+      - name: Update package list
+        run: apt-get update && apt-get upgrade
       - name: install the zip utility
         run: apt-get install zip -y
       - name: genrate the deployemnet package
