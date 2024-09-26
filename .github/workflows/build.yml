@@ -26,6 +26,6 @@ jobs:
           aws_secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           application_name: "nodeJS_firstApp_deploy"
           environment_name: "NodeJSfirstAppdeploy-env"
-          version_label: ${{ github.sha }}
+          version_label: "v1.0.0-${{ github.sha }} "
           region: ap-south-1
           deployment_package: nodejs-app-build.zip
