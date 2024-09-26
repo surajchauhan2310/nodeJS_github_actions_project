@@ -1,12 +1,20 @@
 const express = require("express");
-const moment = require("moment");
+const moment = require("moment-timezone"); // Import moment-timezone
 const app = express();
 const PORT = process.env.PORT || 8081;
 
 app.get("/", (req, res) => {
-  dateTime = moment().format("LLL");
-  res.send("Hello World & Hello Mumbai!!! ==> " + dateTime);
-  res.status(200).send("Application is running on port " + PORT);
+  // Set the time zone to Indian Standard Time
+  const dateTime = moment().tz("Asia/Kolkata").format("LLL");
+  // Send response with current date and time in IST
+  res
+    .status(200)
+    .send(
+      "Hello World & Hello Mumbai!!! ==> " +
+        dateTime +
+        "<br>Application is running on port " +
+        PORT
+    );
 });
 
 app.listen(PORT, () => {
