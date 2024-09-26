@@ -1,4 +1,4 @@
-name: Run the simple Node.js app in GitHub actions's pipeline and deploying it using the AWS Elastic Beanstalk
+name: Run the simple Node.js app in GitHub actions pipeline and deploying it using the AWS Elastic Beanstalk
 on: push
 jobs:
   first-job:
@@ -6,9 +6,9 @@ jobs:
     container: node
     steps:
       - name: check the node version
-        uses: node --version
+        run: node --version
       - name: check the npm version
-        uses: npm version
+        run: npm --version
       - name: checkout the code from the repos
         uses: actions/checkout@v4
       - name: install the dependencies
@@ -22,7 +22,7 @@ jobs:
           aws_secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           application_name: "nodeJS_firstApp_deploy"
           environment_name: "NodeJSfirstAppdeploy-env"
-          version_label: ${ { github.sha } }
+          version_label: ${{ github.sha }}
           region: ap-south-1
           deployment_package: nodejs-app-build.zip
 
