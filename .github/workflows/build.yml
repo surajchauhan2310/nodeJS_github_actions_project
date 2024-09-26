@@ -5,8 +5,28 @@ jobs:
     runs-on: ubuntu-latest
     container: node
     steps:
-      - run: node --version
-      - run: npm version
-      - uses: actions/checkout@v4
-      - run: npm install
-      - run: node app.js
+      - name: check the node version
+        uses: node --version
+      - name: check the npm version
+        uses: npm version
+      - name: checkout the code from the repos
+        uses: actions/checkout@v4
+      - name: install the dependencies
+        run: npm install
+      - name: genrate the deployemnet package
+        run: zip -r nodejs-app-build.zip .
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws_secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          application_name: "nodeJS_firstApp_deploy"
+          environment_name: "NodeJSfirstAppdeploy-env"
+          version_label: ${ { github.sha } }
+          region: ap-south-1
+          deployment_package: nodejs-app-build.zip
+
+    #   - run: node --version
+    #   - run: npm version
+    #   - uses: actions/checkout@v4
+    #   - run: npm install
