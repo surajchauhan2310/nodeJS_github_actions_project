@@ -6,9 +6,9 @@ jobs:
     container: node
     steps:
       - name: check the node version
-        uses: node --version
+        run: node --version
       - name: check the npm version
-        uses: npm version
+        run: npm version
       - name: checkout the code from the repos
         uses: actions/checkout@v4
       - name: install the dependencies
@@ -25,5 +25,3 @@ jobs:
           version_label: ${ { github.sha } }
           region: ap-south-1
           deployment_package: nodejs-app-build.zip
-
-   
