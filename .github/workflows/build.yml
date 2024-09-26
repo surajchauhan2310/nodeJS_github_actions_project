@@ -1,5 +1,7 @@
-name: Run the simple Node.js app in GitHub actions's pipeline and deploying it using the AWS Elastic Beanstalk
-on: push
+name: Run the simple Node.js app in GitHub actions pipeline and deploying it using the AWS Elastic Beanstalk
+on:
+  push:
+    branches: [main]
 jobs:
   first-job:
     runs-on: ubuntu-latest
