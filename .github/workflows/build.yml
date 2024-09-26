@@ -14,7 +14,7 @@ jobs:
       - name: install the dependencies
         run: npm install
       - name: Update package list
-        run: apt-get update && apt-get upgrade
+        run: apt-get update -y && apt-get upgrade -y
       - name: install the zip utility
         run: apt-get install zip -y
       - name: genrate the deployemnet package
